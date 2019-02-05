@@ -11,10 +11,11 @@ import UIKit
 class StockTableViewCell: UITableViewCell {
 
     //Outlets
+    
+    @IBOutlet weak var stockLogo: UIImageView!
+    @IBOutlet weak var stockClose: UILabel!
     @IBOutlet weak var stockName: UILabel!
     @IBOutlet weak var stockVolume: UILabel!
-    @IBOutlet weak var stockClose: UILabel!
-    @IBOutlet weak var stockLogo: UIImageView!
     
     var stockDetails: Stock? {
         didSet {
@@ -29,18 +30,18 @@ class StockTableViewCell: UITableViewCell {
 
     func updateViews() {
         guard let stockDetail = stockDetails else {return}
-        self.stockName.text = stockDetail.metaData.the2Symbol
+        self.stockName.text = stockDetail.metaData.symbol
         self.stockVolume.text = getStockVolume(stock: stockDetail)
         self.stockClose.text = getStockPrice(stock: stockDetail)
     }
     
     func getStockPrice(stock: Stock) -> String {
-        guard let closingPrice = stock.timeSeriesDaily["2019-01-25"]?.the4Close else {return ""}
+        guard let closingPrice = stock.timeSeriesDaily[core.today]?.close else {return ""}
         return closingPrice
     }
     
     func getStockVolume(stock: Stock) -> String {
-        guard let volume = stock.timeSeriesDaily["2019-01-25"]?.the5Volume else {return ""}
+        guard let volume = stock.timeSeriesDaily[core.today]?.volume else {return ""}
         return volume
     }
 }

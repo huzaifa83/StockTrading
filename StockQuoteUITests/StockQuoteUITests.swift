@@ -26,9 +26,21 @@ class StockQuoteUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testValidCellDetailSuccess() {
+        
+        
+        let app = XCUIApplication()
+        let tablesQuery = app.tables
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["AAPL"]/*[[".cells.staticTexts[\"AAPL\"]",".staticTexts[\"AAPL\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        let stocksButton = app.navigationBars["StockQuote.DetailStockView"].buttons["Stocks"]
+        stocksButton.tap()
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["FB"]/*[[".cells.staticTexts[\"FB\"]",".staticTexts[\"FB\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        stocksButton.tap()
+       
+        
+        
     }
 
 }
+

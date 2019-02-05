@@ -20,6 +20,7 @@ class DetailStockViewController: UIViewController {
     var stockImage = UIImage()
     
     // Outlets
+  //  @IBOutlet weak var detailScrollView: UIScrollView!
     @IBOutlet weak var high: UILabel!
     @IBOutlet weak var low: UILabel!
     @IBOutlet weak var volume: UILabel!
@@ -34,6 +35,7 @@ class DetailStockViewController: UIViewController {
     }
     
     func updateViews() {
+//        detailScrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 100)
         name.text = stockName
         open.text = stockOpen
         close.text = stockClose
